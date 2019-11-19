@@ -8,7 +8,7 @@ class Alacritty < Formula
   url "https://github.com/jwilm/alacritty/releases/download/v#{version}/Alacritty-v#{version}.dmg"
   url "https://github.com/jwilm/alacritty/archive/v#{version}.tar.gz"
   # revision 0
-  sha256 "0bd968f33a4865574ed76a53669bc3a5eb0a80c10c209978f846b317525c8f4a"
+  sha256 "53980625073d4169f8b0fba572bc98511582aa414179e4538e5e15361df4332c"
 
   depends_on "cmake" => :build
   depends_on "fontconfig"
