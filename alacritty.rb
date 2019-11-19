@@ -36,12 +36,12 @@ class Alacritty < Formula
     system "gzip -c extra/alacritty.man > extra/alacritty.1.gz"
 
     # Grab the bits we care about.
-    (prefix / "Applications").install "target/release/osx/Alacritty.app"
+    prefix.install "target/release/osx/Alacritty.app"
     bin.install "target/release/alacritty"
-    (share / "alacritty").install *Dir["alacritty*.yml"], "extra/alacritty.info"
-    (share / "man" / "man1").install "extra/alacritty.1.gz"
-    (share / "zsh-completions").install "extra/completions/_alacritty"
-    (share / "bash-completions" / "completions").install "extra/completions/alacritty.bash"
+    pkgshare.install "alacritty.yml", "extra/alacritty.info"
+    man1.install "extra/alacritty.1.gz"
+    zsh_completion.install "extra/completions/_alacritty"
+    bash_completion.install "extra/completions/alacritty.bash"
   end
 
   def caveats
@@ -50,7 +50,7 @@ class Alacritty < Formula
       system, you will probably end up wanting to customize it anyhow. You can
       find a copy of the default configuration at:
 
-        /usr/local/share/alacritty/alacritty_macos.yml
+        /usr/local/share/alacritty/alacritty.yml
 
       You can copy this file to ~/.alacritty.yml and edit as you please.
 
@@ -62,12 +62,12 @@ class Alacritty < Formula
       WARNING: This formula can't install into /Applications, the application
       has been installed to:
 
-        #{prefix / "Applications/Alacritty.app"}
+        #{prefix / "Alacritty.app"}
 
       This path is stable across upgrades, you can create your own symlink in
       the global /Applications folder as follows:
 
-        ln -s #{prefix / "Applications/Alacritty.app"} /Applications/
+        ln -s #{prefix / "Alacritty.app"} /Applications/
     EOS
 
     if build.with? "cache"
