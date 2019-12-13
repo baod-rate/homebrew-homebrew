@@ -37,7 +37,7 @@ class Alacritty < Formula
     system "gzip -c extra/alacritty.man > extra/alacritty.1.gz"
 
     # Grab the bits we care about.
-    prefix.install "target/release/osx/Alacritty.app"
+    (prefix / "Applications").install "target/release/osx/Alacritty.app"
     bin.install "target/release/alacritty"
     pkgshare.install "alacritty.yml", "extra/alacritty.info"
     man1.install "extra/alacritty.1.gz"
@@ -63,12 +63,12 @@ class Alacritty < Formula
       WARNING: This formula can't install into /Applications, the application
       has been installed to:
 
-        #{prefix / "Alacritty.app"}
+        #{prefix / "Applications" / "Alacritty.app"}
 
       This path is stable across upgrades, you can create your own symlink in
       the global /Applications folder as follows:
 
-        ln -s #{prefix / "Alacritty.app"} /Applications/
+        ln -s #{prefix / "Applications" / "Alacritty.app"} /Applications/
     EOS
 
     if build.with? "cache"
